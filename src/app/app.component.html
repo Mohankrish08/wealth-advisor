@@ -1,2 +1,142 @@
-<app-expense-adder></app-expense-adder>
-<router-outlet />
+<!-- app.component.html -->
+<style>
+  body {
+    margin: 0;
+    overflow-x: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  /* NAV HIDE/SHOW */
+  .navbar {
+    position: fixed;
+    top: 0;
+    height: 50px;
+    width: 100%;
+    padding: 20px 40px;
+    background-color: #1a1a1a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  }
+  .navbar.hidden {
+    transform: translateY(-100%);
+  }
+
+  /* MAIN CONTENT holds everything below header */
+  .main-content {
+    /* -top: 80px; space for navbapaddingr */
+  }
+
+  footer {
+    position: fixed;
+    left: 0;
+    bottom: -100%; /* hidden by default */
+    width: 100%;
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 60px 0 20px;
+    transition: bottom 0.5s ease;
+    z-index: 999;
+  }
+  footer.visible {
+    bottom: 0;
+  }
+
+  /* footer inner styling */
+  footer h5 { font-size:1.3rem; color:#00d4ff; margin-bottom:20px; font-weight:600; }
+  footer p { font-size:0.95rem; line-height:1.6; }
+  footer a { color:#fff; text-decoration:none; transition:all .3s; }
+  footer a:hover { color:#00d4ff; transform:translateX(5px); }
+  footer .social-icons a { font-size:1.8rem; margin-right:15px; }
+  footer .social-icons a:hover { transform:translateY(-3px); }
+  footer hr { border-color: rgba(255,255,255,0.1); margin:40px 0; }
+  footer .copyright { font-size:0.9rem; }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <a class="navbar-brand" href="#">BrandName</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Features</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+    </ul>
+    <a href="#" class="btn btn-custom ms-lg-3">Sign Up</a>
+  </div>
+</nav>
+
+<div class="main-content">
+  <app-expense-adder></app-expense-adder>
+  <router-outlet></router-outlet>
+</div>
+
+<footer id="site-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <h5>About Us</h5>
+        <p>We’re a passionate team dedicated to creating innovative solutions that inspire and empower.</p>
+      </div>
+      <div class="col-md-4 mb-4">
+        <h5>Explore</h5>
+        <ul class="list-unstyled">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Features</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4 mb-4">
+        <h5>Connect</h5>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <p class="copyright text-center mb-0">© 2025 BrandName. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script>
+  let lastScroll = 0;
+  const nav = document.querySelector('.navbar');
+  const footer = document.getElementById('site-footer');
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+
+    // Hide header on scroll down, show on scroll up or at top
+    if (currentScroll <= 0) {
+      nav.classList.remove('hidden');
+    } else if (currentScroll > lastScroll) {
+      nav.classList.add('hidden');
+    } else {
+      nav.classList.remove('hidden');
+    }
+    lastScroll = currentScroll;
+
+    // Show footer when at bottom
+    if (window.innerHeight + window.pageYOffset >= document.documentElement.scrollHeight - 10) {
+      footer.classList.add('visible');
+    } else {
+      footer.classList.remove('visible');
+    }
+  });
+</script>
