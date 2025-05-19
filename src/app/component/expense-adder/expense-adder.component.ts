@@ -39,6 +39,7 @@ export class ExpenseAdderComponent {
         date: this.date,
         amount: this.amount,
       });
+      
       alert('Expense submitted successfully!');
       // Reset to defaults
       this.country = 'India';
