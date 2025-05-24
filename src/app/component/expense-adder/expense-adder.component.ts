@@ -72,18 +72,10 @@ export class ExpenseAdderComponent {
         Amount: this.amount|| 0, // Default to 0 if null
       };
 
-      const test = {
-        Amount: 251,
-        Country: "India",
-        Date: "2025-05-19",
-        District: "Coimbatore",
-        ExpenseType: "Food",
-        Reason: "Dinner",
-        State: "Tamil Nadu"
-      }
+      
 
-      console.log('Expense submitted:', test);
+      console.log('Expense submitted:', expenseData);
 
-      this.wealthService.addWealthEntry(test);
+      this.wealthService.addWealthEntry(expenseData);
   }
 }

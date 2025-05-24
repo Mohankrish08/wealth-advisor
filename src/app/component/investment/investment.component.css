@@ -1,0 +1,73 @@
+/* Basic dark mode styles */
+.investment-container {
+  background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  color: #222;
+  position: relative;
+  z-index: 1;
+  padding-bottom: 40px;
+}
+
+.dark-mode {
+  background: #121212;
+  color: #eee;
+}
+
+/* Video background styles */
+#bg-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: brightness(0.6);
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgb(0 0 0 / 0.15);
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.dark-mode .card {
+  background: rgba(40, 40, 40, 0.85);
+  color: #eee;
+  box-shadow: 0 0 12px rgba(255 255 255 / 0.15);
+}
+
+h1, h3 {
+  font-weight: 700;
+}
+
+/* Inputs and selects styling */
+input.form-control,
+select.form-select {
+  border-radius: 5px;
+  border: 1.5px solid #ccc;
+  transition: border-color 0.3s ease;
+}
+
+input.form-control:focus,
+select.form-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+.btn-primary {
+  width: 100%;
+}
+
+/* Responsive layout for cards */
+@media (max-width: 767px) {
+  .card-body.row {
+    flex-direction: column !important;
+  }
+  .card-body .col-md-6 {
+    max-width: 100% !important;
+  }
+}

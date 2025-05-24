@@ -1,0 +1,195 @@
+<br>
+<br>
+<div class="container mt-4">
+  <div class="row gy-4">
+
+    <!-- GOLD -->
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-header bg-warning text-dark fw-bold">Gold Investment</div>
+        <div class="card-body">
+          <div class="row">
+            <!-- Input section -->
+            <div class="col-6">
+              <div class="mb-2">
+                <label>Rate (₹)</label>
+                <input type="number" class="form-control" [(ngModel)]="gold.rate" />
+              </div>
+              <div class="mb-2">
+                <label>Grams</label>
+                <input type="number" class="form-control" [(ngModel)]="gold.grams" />
+              </div>
+              <div class="mb-2">
+                <label>Carat</label>
+                <select class="form-select" [(ngModel)]="gold.carat">
+                  <option value="24K">24K</option>
+                  <option value="22K">22K</option>
+                </select>
+              </div>
+            </div>
+            <!-- Image section -->
+            <div class="col-6 d-flex align-items-center justify-content-center">
+              <img src="assets/img/gold.jpg" alt="Gold" class="img-fluid" style="max-height: 150px;">
+            </div>
+          </div>
+          <button class="btn btn-primary w-100 mb-3 mt-2" (click)="submitGold()">Submit</button>
+          <canvas baseChart [data]="goldChartData" [type]="'line'"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- SILVER -->
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-header bg-secondary text-white fw-bold">Silver Investment</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-6">
+              <div class="mb-2">
+                <label>Rate (₹)</label>
+                <input type="number" class="form-control" [(ngModel)]="silver.rate" />
+              </div>
+              <div class="mb-2">
+                <label>Grams</label>
+                <input type="number" class="form-control" [(ngModel)]="silver.grams" />
+              </div>
+              <div class="mb-2">
+                <label>Carat</label>
+                <select class="form-select" [(ngModel)]="silver.carat">
+                  <option value="Pure">Pure</option>
+                  <option value="Sterling">Sterling</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-6 d-flex align-items-center justify-content-center">
+              <img src="assets/img/silver.jpg" alt="Silver" class="img-fluid" style="max-height: 150px;">
+            </div>
+          </div>
+          <button class="btn btn-primary w-100 mb-3 mt-2" (click)="submitSilver()">Submit</button>
+          <canvas baseChart [data]="silverChartData" [type]="'line'"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- SHARE -->
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-header bg-info text-white fw-bold">Share Investment</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-6">
+              <div class="mb-2">
+                <label>Share Name</label>
+                <input type="text" class="form-control" [(ngModel)]="share.name" />
+              </div>
+              <div class="mb-2">
+                <label>Price (₹)</label>
+                <input type="number" class="form-control" [(ngModel)]="share.price" />
+              </div>
+              <div class="mb-2">
+                <label>Quantity</label>
+                <input type="number" class="form-control" [(ngModel)]="share.quantity" />
+              </div>
+            </div>
+            <div class="col-6 d-flex align-items-center justify-content-center">
+              <img src="assets/img/share.jpg" alt="Share" class="img-fluid" style="max-height: 150px;">
+            </div>
+          </div>
+          <button class="btn btn-primary w-100 mb-3 mt-2" (click)="submitShare()">Submit</button>
+          <canvas baseChart [data]="shareChartData" [type]="'line'"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- FD -->
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-header bg-success text-white fw-bold">Fixed Deposit (FD)</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-6">
+              <div class="mb-2">
+                <label>FD Name</label>
+                <input type="text" class="form-control" [(ngModel)]="fd.name" />
+              </div>
+              <div class="mb-2">
+                <label>Amount (₹)</label>
+                <input type="number" class="form-control" [(ngModel)]="fd.amount" />
+              </div>
+              <div class="mb-2">
+                <label>Date</label>
+                <input type="date" class="form-control" [(ngModel)]="fd.date" />
+              </div>
+            </div>
+            <div class="col-6 d-flex align-items-center justify-content-center">
+              <img src="assets/img/fd.jpg" alt="FD" class="img-fluid" style="max-height: 150px;">
+            </div>
+          </div>
+          <button class="btn btn-primary w-100 mb-3 mt-2" (click)="submitFD()">Submit</button>
+          <canvas baseChart [data]="fdChartData" [type]="'line'"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- RD -->
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-header bg-danger text-white fw-bold">Recurring Deposit (RD)</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-6">
+              <div class="mb-2">
+                <label>RD Name</label>
+                <input type="text" class="form-control" [(ngModel)]="rd.name" />
+              </div>
+              <div class="mb-2">
+                <label>Amount (₹)</label>
+                <input type="number" class="form-control" [(ngModel)]="rd.amount" />
+              </div>
+              <div class="mb-2">
+                <label>Date</label>
+                <input type="date" class="form-control" [(ngModel)]="rd.date" />
+              </div>
+            </div>
+            <div class="col-6 d-flex align-items-center justify-content-center">
+              <img src="assets/img/rd.jpg" alt="RD" class="img-fluid" style="max-height: 150px;">
+            </div>
+          </div>
+          <button class="btn btn-primary w-100 mb-3 mt-2" (click)="submitRD()">Submit</button>
+          <canvas baseChart [data]="rdChartData" [type]="'line'"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIP -->
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white fw-bold">SIP Investment</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-6">
+              <div class="mb-2">
+                <label>SIP Name</label>
+                <input type="text" class="form-control" [(ngModel)]="sip.name" />
+              </div>
+              <div class="mb-2">
+                <label>Amount (₹)</label>
+                <input type="number" class="form-control" [(ngModel)]="sip.amount" />
+              </div>
+              <div class="mb-2">
+                <label>Date</label>
+                <input type="date" class="form-control" [(ngModel)]="sip.date" />
+              </div>
+            </div>
+            <div class="col-6 d-flex align-items-center justify-content-center">
+              <img src="assets/img/sip.jpg" alt="SIP" class="img-fluid" style="max-height: 150px;">
+            </div>
+          </div>
+          <button class="btn btn-primary w-100 mb-3 mt-2" (click)="submitSIP()">Submit</button>
+          <canvas baseChart [data]="sipChartData" [type]="'line'"></canvas>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
