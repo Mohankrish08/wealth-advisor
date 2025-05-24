@@ -1,0 +1,71 @@
+<div class="dashboard-container mt-5">
+  <div class="summary-cards">
+    <div class="card investment-card">
+      <h4>Investment of this Month</h4>
+      <h2>₹15,000</h2>
+    </div>
+    <div class="card expense-card">
+      <h4>Total Expenses</h4>
+      <h2>₹22,000</h2>
+    </div>
+  </div>
+
+  <div class="charts">
+    <div class="card chart-card">
+      <h5>Investment Breakdown</h5>
+      <canvas id="investmentPie"></canvas>
+    </div>
+    <div class="card chart-card">
+      <h5>Expense Breakdown</h5>
+      <canvas id="expensePie"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Chart.js Script -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const investmentData = {
+    labels: ["Gold", "Silver", "Stocks", "FD", "RD"],
+    datasets: [{
+      label: "Investments",
+      data: [3000, 2000, 5000, 3000, 2000],
+      backgroundColor: [
+        "#f1c40f", "#bdc3c7", "#3498db", "#e67e22", "#9b59b6"
+      ]
+    }]
+  };
+
+  const expenseData = {
+    labels: ["Room Rent", "Food", "Entertainment", "Petrol", "Others"],
+    datasets: [{
+      label: "Expenses",
+      data: [8000, 6000, 3000, 2500, 2500],
+      backgroundColor: [
+        "#e74c3c", "#2ecc71", "#8e44ad", "#f39c12", "#34495e"
+      ]
+    }]
+  };
+
+  new Chart(document.getElementById('investmentPie'), {
+    type: 'pie',
+    data: investmentData,
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'bottom' }
+      }
+    }
+  });
+
+  new Chart(document.getElementById('expensePie'), {
+    type: 'pie',
+    data: expenseData,
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'bottom' }
+      }
+    }
+  });
+</script>
