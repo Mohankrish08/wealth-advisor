@@ -1,148 +1,201 @@
+<!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-<div class="background-wrapper"> 
-  <div class="content-wrapper">
-    <div class="container-fluid py-5 d-flex justify-content-center align-items-start">
-      <div class="row w-100 justify-content-center">
-        <div class="col-lg-8 col-md-10 col-sm-12 bg-white bg-opacity-75 rounded-4 shadow p-5">
-          <h2 class="text-center mb-4 fw-bold text-primary">Add Your Expense</h2>
-          <form #expenseForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
-            <!-- Country -->
-             
-            <div class="mb-3">
-              <label for="country" class="form-label fw-semibold">Country</label>
-              <input
-                type="text"
-                id="country"
-                class="form-control"
-                [(ngModel)]="country"
-                name="country"
-                required
-                #countryInput="ngModel"
-              />
-              <div class="text-danger small mt-1" *ngIf="countryInput.touched && countryInput.invalid">
-                Country is required
-              </div>
-            </div>
+<!-- Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+<!-- Poppins font (for headings) -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
 
-            <!-- State -->
-            <div class="mb-3">
-              <label for="state" class="form-label fw-semibold">State</label>
-              <input
-                type="text"
-                id="state"
-                class="form-control"
-                [(ngModel)]="state"
-                name="state"
-                required
-                #stateInput="ngModel"
-              />
-              <div class="text-danger small mt-1" *ngIf="stateInput.touched && stateInput.invalid">
-                State is required
-              </div>
-            </div>
+<div class="container py-5">
+  <h2 class="text-center mb-5 text-primary fw-bold">Add Your Expense</h2>
+  <form #expenseForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="row g-4">
 
-            <!-- District -->
-            <div class="mb-3">
-              <label for="district" class="form-label fw-semibold">District</label>
-              <input
-                type="text"
-                id="district"
-                class="form-control"
-                [(ngModel)]="district"
-                name="district"
-                required
-                #districtInput="ngModel"
-              />
-              <div class="text-danger small mt-1" *ngIf="districtInput.touched && districtInput.invalid">
-                District is required
-              </div>
+      <!-- Country Card -->
+      <div class="col-md-6">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <div class="d-flex align-items-center mb-2">
+              <i class="bi bi-globe-americas fs-4 text-secondary me-2"></i>
+              <label for="country" class="form-label mb-0">Country</label>
             </div>
-
-            <!-- Expense Type -->
-            <div class="mb-3">
-              <label for="expenseType" class="form-label fw-semibold">Expense Type</label>
-              <select
-                id="expenseType"
-                class="form-select"
-                [(ngModel)]="selectedExpenseType"
-                name="expenseType"
-                required
-                #expenseTypeInput="ngModel"
-              >
-                <option value="" disabled>Select Expense Type</option>
-                <option *ngFor="let type of expenseTypes" [value]="type">{{ type }}</option>
-              </select>
-              <div class="text-danger small mt-1" *ngIf="expenseTypeInput.touched && expenseTypeInput.invalid">
-                Please select an expense type
-              </div>
+            <input
+              type="text"
+              id="country"
+              class="form-control w-100"
+              [(ngModel)]="country"
+              name="country"
+              required
+              #countryInput="ngModel"
+            />
+            <div class="text-danger small mt-1" *ngIf="countryInput.touched && countryInput.invalid">
+              Country is required
             </div>
-
-            <!-- Reason -->
-            <div class="mb-3">
-              <label for="reason" class="form-label fw-semibold">Reason</label>
-              <input
-                type="text"
-                id="reason"
-                class="form-control"
-                placeholder="Enter reason for expense"
-                [(ngModel)]="reason"
-                name="reason"
-                required
-                minlength="3"
-                #reasonInput="ngModel"
-              />
-              <div class="text-danger small mt-1" *ngIf="reasonInput.touched && reasonInput.invalid">
-                Reason is required and must be at least 3 characters
-              </div>
-            </div>
-
-            <!-- Date -->
-            <div class="mb-3">
-              <label for="date" class="form-label fw-semibold">Date</label>
-              <input
-                type="date"
-                id="date"
-                class="form-control"
-                [(ngModel)]="date"
-                name="date"
-                required
-                #dateInput="ngModel"
-              />
-              <div class="text-danger small mt-1" *ngIf="dateInput.touched && dateInput.invalid">
-                Date is required
-              </div>
-            </div>
-
-            <!-- Amount -->
-            <div class="mb-4">
-              <label for="amount" class="form-label fw-semibold">Amount (INR)</label>
-              <input
-                type="number"
-                id="amount"
-                class="form-control"
-                min="0"
-                step="0.01"
-                placeholder="Enter amount spent"
-                [(ngModel)]="amount"
-                name="amount"
-                required
-                #amountInput="ngModel"
-              />
-              <div class="text-danger small mt-1" *ngIf="amountInput.touched && amountInput.invalid">
-                Amount must be a positive number
-              </div>
-            </div>
-
-            <button
-              type="submit"
-              class="btn btn-primary w-100 fw-bold custom-submit-btn"
-              [disabled]="expenseForm.invalid"
-            >
-              Submit Expense
-            </button>
-          </form>
+          </div>
         </div>
       </div>
+
+      <!-- State Card -->
+      <div class="col-md-6">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <div class="d-flex align-items-center mb-2">
+              <i class="bi bi-flag fs-4 text-secondary me-2"></i>
+              <label for="state" class="form-label mb-0">State</label>
+            </div>
+            <input
+              type="text"
+              id="state"
+              class="form-control w-100"
+              [(ngModel)]="state"
+              name="state"     
+              required
+              #stateInput="ngModel"
+            />
+            <div class="text-danger small mt-1" *ngIf="stateInput.touched && stateInput.invalid">
+              State is required
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- District Card -->
+      <div class="col-md-6">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <div class="d-flex align-items-center mb-2">
+              <i class="bi bi-geo-alt fs-4 text-secondary me-2"></i>
+              <label for="district" class="form-label mb-0">District</label>
+            </div>
+            <input
+              type="text"
+              id="district"
+              class="form-control w-100"
+              [(ngModel)]="district"
+              name="district"
+              required
+              #districtInput="ngModel"
+            />
+            <div class="text-danger small mt-1" *ngIf="districtInput.touched && districtInput.invalid">
+              District is required
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Expense Type Card -->
+      <div class="col-md-6">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <div class="d-flex align-items-center mb-2">
+              <i class="bi bi-receipt fs-4 text-secondary me-2"></i>
+              <label for="expenseType" class="form-label mb-0">Expense Type</label>
+            </div>
+            <select
+              id="expenseType"
+              class="form-select w-100"
+              [(ngModel)]="selectedExpenseType"
+              name="expenseType"
+              required
+              #expenseTypeInput="ngModel"
+            >
+              <option value="" disabled>Select Expense Type</option>
+              <option *ngFor="let type of expenseTypes" [value]="type">{{ type }}</option>
+            </select>
+            <div class="text-danger small mt-1" *ngIf="expenseTypeInput.touched && expenseTypeInput.invalid">
+              Please select an expense type
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reason Card -->
+      <div class="col-md-6">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <div class="d-flex align-items-center mb-2">
+              <i class="bi bi-chat-left-text fs-4 text-secondary me-2"></i>
+              <label for="reason" class="form-label mb-0">Reason</label>
+            </div>
+            <input
+              type="text"
+              id="reason"
+              class="form-control w-100"
+              placeholder="Enter reason"
+              [(ngModel)]="reason"
+              name="reason"
+              required
+              minlength="3"
+              #reasonInput="ngModel"
+            />
+            <div class="text-danger small mt-1" *ngIf="reasonInput.touched && reasonInput.invalid">
+              Reason is required (min 3 chars)
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Date Card -->
+      <div class="col-md-6">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <div class="d-flex align-items-center mb-2">
+              <i class="bi bi-calendar-event fs-4 text-secondary me-2"></i>
+              <label for="date" class="form-label mb-0">Date</label>
+            </div>
+            <input
+              type="date"
+              id="date"
+              class="form-control w-100"
+              [(ngModel)]="date"
+              name="date"
+              required
+              #dateInput="ngModel"
+            />
+            <div class="text-danger small mt-1" *ngIf="dateInput.touched && dateInput.invalid">
+              Date is required
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Amount Card -->
+      <div class="col-md-6">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <div class="d-flex align-items-center mb-2">
+              <i class="bi bi-currency-rupee fs-4 text-secondary me-2"></i>
+              <label for="amount" class="form-label mb-0">Amount (INR)</label>
+            </div>
+            <input
+              type="number"
+              id="amount"
+              class="form-control w-100"
+              min="0"
+              step="0.01"
+              placeholder="Enter amount"
+              [(ngModel)]="amount"
+              name="amount"
+              required
+              #amountInput="ngModel"
+            />
+            <div class="text-danger small mt-1" *ngIf="amountInput.touched && amountInput.invalid">
+              Positive amount required
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit Button (full width below cards) -->
+      <div class="col-12 text-center mt-4">
+        <button
+          type="submit"
+          class="btn btn-primary px-5"
+          [disabled]="expenseForm.invalid"
+        >
+          <i class="bi bi-check-circle me-2"></i>Submit Expense
+        </button>
+      </div>
+
     </div>
-  </div>
+  </form>
 </div>
